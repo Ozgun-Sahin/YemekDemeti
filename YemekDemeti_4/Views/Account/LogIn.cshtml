@@ -1,0 +1,33 @@
+﻿@using YemekDemeti_4.Models
+@model CustomerVM
+@{
+    ViewBag.Title = "LogIn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="~/Content/LogInStyleSheet.css" rel="stylesheet" />
+
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+
+        @using (Html.BeginForm("LogIn", "Account"))
+        {
+            @Html.ValidationSummary()
+            @Html.HiddenFor(x => x.Role, new { @Value = "user" })
+            @Html.TextBoxFor(x => x.UserName, new { @class = "fadeIn second", @type="text", @placeholder = "Kullanıcı İsmi" })
+            @Html.PasswordFor(x => x.Password, new { @class = "fadeIn third", @type = "password", @placeholder = "Şifre" })
+
+            <input type="submit" class="fadeIn fourth" value="Giriş">
+        }
+
+        <span style="color:red" class="fadeIn fourth">@(ViewBag.Mesaj)</span>
+  
+    </div>
+</div>
+

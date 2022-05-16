@@ -1,0 +1,39 @@
+﻿@using YemekDemeti_4.Models
+@using YemekDemeti_4.Data
+@model CommentVM
+@{
+    ViewBag.Title = "AdminComment";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var yorumlar = (List<Comment>)ViewBag.Yorumlar;
+}
+
+
+<div class="container-fluid">
+    <ul class="list-group list-group-flush">
+
+        @foreach (var item in yorumlar)
+        {
+            int siparisID = item.OrderID;
+
+            YemekDemeti_4DbEntities6 _dbContext = new YemekDemeti_4DbEntities6();
+
+            Order siparis = _dbContext.Orders.Where(x => x.ID == siparisID).FirstOrDefault();
+
+            Customer yorumYapanKullanici = _dbContext.Customers.Where(x => x.ID == siparis.CustomerID).FirstOrDefault();
+
+            <li class="list-group-item">
+                <i class="fa fa-comment"></i> @(item.C_Comment) <br />
+                <i class="fa fa-user-o"></i> @(yorumYapanKullanici.UserName) <br />
+                <i class="fa fa-calendar"></i> @(siparis.OrderTime)
+                @if (item.Confirm == false)
+                {
+                    <button class="btn btn-primary" onclick="window.location.href='/Restaurant/AdminCommentConfirm/@(item.ID)'"><i class="fa fa-check-square-o"></i> Onayla</button>
+                }
+            </li>
+        }
+
+    </ul>
+</div>
+
+
+

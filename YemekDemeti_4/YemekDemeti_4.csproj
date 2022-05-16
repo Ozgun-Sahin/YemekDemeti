@@ -1,0 +1,536 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F9C44EF3-7422-4774-8491-97DF9785E975}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>YemekDemeti_4</RootNamespace>
+    <AssemblyName>YemekDemeti_4</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\AdminPageJavaScript.js" />
+    <Content Include="Content\AdminStyleSheet.css" />
+    <Content Include="Content\CardStyleSheet.css" />
+    <Content Include="Content\HomeStyleSheet.css" />
+    <Content Include="Content\LogInStyleSheet.css" />
+    <Content Include="Content\MenuJavaScript.js" />
+    <Content Include="Content\MenuStyleSheet.css" />
+    <Content Include="Content\PaymentStyleSheet.css" />
+    <Content Include="Content\ProfilePageStyleSheet.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Data\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Global.asax" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Data\Address.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Category.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\City.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Comment.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Customer.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\C__MigrationHistory.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\District.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Food.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Order.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\OrderDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Restaurant.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\AddressDTO.cs" />
+    <Compile Include="DTO\FoodDTO.cs" />
+    <Compile Include="DTO\RestaurantDTO.cs" />
+    <Compile Include="Filters\AdminAuthorizationAttribute.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Filters\CustomAuthorizationAttribute.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RestaurantController.cs" />
+    <Compile Include="Data\Entities\Addresses.cs" />
+    <Compile Include="Data\Entities\Categories.cs" />
+    <Compile Include="Data\Entities\Cities.cs" />
+    <Compile Include="Data\Entities\Comments.cs" />
+    <Compile Include="Data\Entities\Customers.cs" />
+    <Compile Include="Data\Entities\Districts.cs" />
+    <Compile Include="Data\Entities\Foods.cs" />
+    <Compile Include="Data\Entities\OrderDetails.cs" />
+    <Compile Include="Data\Entities\Orders.cs" />
+    <Compile Include="Data\Entities\Restaurants.cs" />
+    <Compile Include="Data\Entities\RestaurantSpecificFood.cs" />
+    <Compile Include="Data\YemekDemeti_4DbContext.cs" />
+    <Compile Include="DTO\CustomerDTO.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202212203401_initial.cs" />
+    <Compile Include="Migrations\202202212203401_initial.designer.cs">
+      <DependentUpon>202202212203401_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202281239015_AdressTableAdressTitleColumnAdded.cs" />
+    <Compile Include="Migrations\202202281239015_AdressTableAdressTitleColumnAdded.designer.cs">
+      <DependentUpon>202202281239015_AdressTableAdressTitleColumnAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202281240412_AddressTitleAnnotationAdeed.cs" />
+    <Compile Include="Migrations\202202281240412_AddressTitleAnnotationAdeed.designer.cs">
+      <DependentUpon>202202281240412_AddressTitleAnnotationAdeed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202281242125_PhoneAnnotationAdded.cs" />
+    <Compile Include="Migrations\202202281242125_PhoneAnnotationAdded.designer.cs">
+      <DependentUpon>202202281242125_PhoneAnnotationAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202281426400_PhoneDatasAdded.cs" />
+    <Compile Include="Migrations\202202281426400_PhoneDatasAdded.designer.cs">
+      <DependentUpon>202202281426400_PhoneDatasAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203012218242_CityTableAdded.cs" />
+    <Compile Include="Migrations\202203012218242_CityTableAdded.designer.cs">
+      <DependentUpon>202203012218242_CityTableAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203012357407_DistrictTableAdded.cs" />
+    <Compile Include="Migrations\202203012357407_DistrictTableAdded.designer.cs">
+      <DependentUpon>202203012357407_DistrictTableAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203021638129_AddressTableDistrictColumnAddedCityColumnChanged.cs" />
+    <Compile Include="Migrations\202203021638129_AddressTableDistrictColumnAddedCityColumnChanged.designer.cs">
+      <DependentUpon>202203021638129_AddressTableDistrictColumnAddedCityColumnChanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203022035468_RestaurantDistrictColumnAdded.cs" />
+    <Compile Include="Migrations\202203022035468_RestaurantDistrictColumnAdded.designer.cs">
+      <DependentUpon>202203022035468_RestaurantDistrictColumnAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203022040475_RestaurantTableFKAdded.cs" />
+    <Compile Include="Migrations\202203022040475_RestaurantTableFKAdded.designer.cs">
+      <DependentUpon>202203022040475_RestaurantTableFKAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203031908535_RestaurantTableAdminNameAndPasswordAdded.cs" />
+    <Compile Include="Migrations\202203031908535_RestaurantTableAdminNameAndPasswordAdded.designer.cs">
+      <DependentUpon>202203031908535_RestaurantTableAdminNameAndPasswordAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203071435061_OrderTableConfirmedColumnAdded.cs" />
+    <Compile Include="Migrations\202203071435061_OrderTableConfirmedColumnAdded.designer.cs">
+      <DependentUpon>202203071435061_OrderTableConfirmedColumnAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203071725569_OrderTableScoreColumnAdded.cs" />
+    <Compile Include="Migrations\202203071725569_OrderTableScoreColumnAdded.designer.cs">
+      <DependentUpon>202203071725569_OrderTableScoreColumnAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203072032021_CommentTableScoreColumnAdded.cs" />
+    <Compile Include="Migrations\202203072032021_CommentTableScoreColumnAdded.designer.cs">
+      <DependentUpon>202203072032021_CommentTableScoreColumnAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203110920013_RestoranaOzguYemekDenemeTableAdded.cs" />
+    <Compile Include="Migrations\202203110920013_RestoranaOzguYemekDenemeTableAdded.designer.cs">
+      <DependentUpon>202203110920013_RestoranaOzguYemekDenemeTableAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203110948070_RestoranaOzguYemekDeleted.cs" />
+    <Compile Include="Migrations\202203110948070_RestoranaOzguYemekDeleted.designer.cs">
+      <DependentUpon>202203110948070_RestoranaOzguYemekDeleted.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203111023549_RestaurantSpecificFoodTableAdded.cs" />
+    <Compile Include="Migrations\202203111023549_RestaurantSpecificFoodTableAdded.designer.cs">
+      <DependentUpon>202203111023549_RestaurantSpecificFoodTableAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203132014587_FoodsTableNameUnitPriceImagesColumsDeleted.cs" />
+    <Compile Include="Migrations\202203132014587_FoodsTableNameUnitPriceImagesColumsDeleted.designer.cs">
+      <DependentUpon>202203132014587_FoodsTableNameUnitPriceImagesColumsDeleted.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203132147471_FoodsTableRestaurantIDAdded.cs" />
+    <Compile Include="Migrations\202203132147471_FoodsTableRestaurantIDAdded.designer.cs">
+      <DependentUpon>202203132147471_FoodsTableRestaurantIDAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203132259082_OrdersAddressIDColumnAdded.cs" />
+    <Compile Include="Migrations\202203132259082_OrdersAddressIDColumnAdded.designer.cs">
+      <DependentUpon>202203132259082_OrdersAddressIDColumnAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203142114574_RestaurantSpecificFoodTableNumberOfSalesColumnAdded.cs" />
+    <Compile Include="Migrations\202203142114574_RestaurantSpecificFoodTableNumberOfSalesColumnAdded.designer.cs">
+      <DependentUpon>202203142114574_RestaurantSpecificFoodTableNumberOfSalesColumnAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203152019205_OrdersTableDeliveredColumnAdded.cs" />
+    <Compile Include="Migrations\202203152019205_OrdersTableDeliveredColumnAdded.designer.cs">
+      <DependentUpon>202203152019205_OrdersTableDeliveredColumnAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203181042320_RestaurantTableRoleColumnAdded.cs" />
+    <Compile Include="Migrations\202203181042320_RestaurantTableRoleColumnAdded.designer.cs">
+      <DependentUpon>202203181042320_RestaurantTableRoleColumnAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203210548006_CustromerTableDataUserNameDataAnnotationAdded.cs" />
+    <Compile Include="Migrations\202203210548006_CustromerTableDataUserNameDataAnnotationAdded.designer.cs">
+      <DependentUpon>202203210548006_CustromerTableDataUserNameDataAnnotationAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203211331258_CustomerTabelGSMColumnAdded.cs" />
+    <Compile Include="Migrations\202203211331258_CustomerTabelGSMColumnAdded.designer.cs">
+      <DependentUpon>202203211331258_CustomerTabelGSMColumnAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203211422563_PhoneTableDeleted.cs" />
+    <Compile Include="Migrations\202203211422563_PhoneTableDeleted.designer.cs">
+      <DependentUpon>202203211422563_PhoneTableDeleted.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203211426145_FoodRestaurantJointTableDeleted.cs" />
+    <Compile Include="Migrations\202203211426145_FoodRestaurantJointTableDeleted.designer.cs">
+      <DependentUpon>202203211426145_FoodRestaurantJointTableDeleted.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203211427530_RestauratnAdminsTableDeleted.cs" />
+    <Compile Include="Migrations\202203211427530_RestauratnAdminsTableDeleted.designer.cs">
+      <DependentUpon>202203211427530_RestauratnAdminsTableDeleted.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203211505423_DataAnnotationsAdded.cs" />
+    <Compile Include="Migrations\202203211505423_DataAnnotationsAdded.designer.cs">
+      <DependentUpon>202203211505423_DataAnnotationsAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203222032027_RestaurantScoreTypeChangeIntoDouble.cs" />
+    <Compile Include="Migrations\202203222032027_RestaurantScoreTypeChangeIntoDouble.designer.cs">
+      <DependentUpon>202203222032027_RestaurantScoreTypeChangeIntoDouble.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204252044394_GSMDataTypeChanged.cs" />
+    <Compile Include="Migrations\202204252044394_GSMDataTypeChanged.designer.cs">
+      <DependentUpon>202204252044394_GSMDataTypeChanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204252120198_GSMDataAnnotationAdded.cs" />
+    <Compile Include="Migrations\202204252120198_GSMDataAnnotationAdded.designer.cs">
+      <DependentUpon>202204252120198_GSMDataAnnotationAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205091921028_RestaurantPasswordDataTypeChanged.cs" />
+    <Compile Include="Migrations\202205091921028_RestaurantPasswordDataTypeChanged.designer.cs">
+      <DependentUpon>202205091921028_RestaurantPasswordDataTypeChanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AddressVM.cs" />
+    <Compile Include="Models\CommentVM.cs" />
+    <Compile Include="Models\CustomerVM.cs" />
+    <Compile Include="Models\FoodVM.cs" />
+    <Compile Include="Models\OrderVM.cs" />
+    <Compile Include="Models\RestaurantVM.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\AddressRepository.cs" />
+    <Compile Include="Repository\CityRepository.cs" />
+    <Compile Include="Repository\CommentRepository.cs" />
+    <Compile Include="Repository\CustomerRepository.cs" />
+    <Compile Include="Repository\FoodRepository.cs" />
+    <Compile Include="Repository\OrderDetailsRepository.cs" />
+    <Compile Include="Repository\OrderRepository.cs" />
+    <Compile Include="Repository\RestaurantRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <EntityDeploy Include="Data\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Data\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <None Include="packages.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\LogIn.cshtml" />
+    <Content Include="Views\Restaurant\Menu.cshtml" />
+    <Content Include="Views\Cart\Cart.cshtml" />
+    <Content Include="Views\Account\ProfilePage.cshtml" />
+    <Content Include="Views\Account\ProfileEdit.cshtml" />
+    <Content Include="Views\Account\AddAddress.cshtml" />
+    <Content Include="Views\Account\OrderDeatils.cshtml" />
+    <Content Include="Views\Account\ProfileCreate.cshtml" />
+    <Content Include="Views\Restaurant\HataSayfası.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Restaurant\LogIn.cshtml" />
+    <Content Include="Views\Restaurant\AdminPage.cshtml" />
+    <Content Include="Views\Restaurant\AdminMenu.cshtml" />
+    <Content Include="Views\Restaurant\AdminComment.cshtml" />
+    <Content Include="Views\Restaurant\AdminOrder.cshtml" />
+    <Content Include="Views\Account\RateAndComment.cshtml" />
+    <Content Include="Views\Restaurant\AdminAddFood.cshtml" />
+    <Content Include="Views\Restaurant\AdminEditFood.cshtml" />
+    <Content Include="Views\Restaurant\AdminEdit.cshtml" />
+    <Content Include="Views\Restaurant\RestaurantRegister.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202202212203401_initial.resx">
+      <DependentUpon>202202212203401_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202281239015_AdressTableAdressTitleColumnAdded.resx">
+      <DependentUpon>202202281239015_AdressTableAdressTitleColumnAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202281240412_AddressTitleAnnotationAdeed.resx">
+      <DependentUpon>202202281240412_AddressTitleAnnotationAdeed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202281242125_PhoneAnnotationAdded.resx">
+      <DependentUpon>202202281242125_PhoneAnnotationAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202281426400_PhoneDatasAdded.resx">
+      <DependentUpon>202202281426400_PhoneDatasAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203012218242_CityTableAdded.resx">
+      <DependentUpon>202203012218242_CityTableAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203012357407_DistrictTableAdded.resx">
+      <DependentUpon>202203012357407_DistrictTableAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203021638129_AddressTableDistrictColumnAddedCityColumnChanged.resx">
+      <DependentUpon>202203021638129_AddressTableDistrictColumnAddedCityColumnChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203022035468_RestaurantDistrictColumnAdded.resx">
+      <DependentUpon>202203022035468_RestaurantDistrictColumnAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203022040475_RestaurantTableFKAdded.resx">
+      <DependentUpon>202203022040475_RestaurantTableFKAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203031908535_RestaurantTableAdminNameAndPasswordAdded.resx">
+      <DependentUpon>202203031908535_RestaurantTableAdminNameAndPasswordAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203071435061_OrderTableConfirmedColumnAdded.resx">
+      <DependentUpon>202203071435061_OrderTableConfirmedColumnAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203071725569_OrderTableScoreColumnAdded.resx">
+      <DependentUpon>202203071725569_OrderTableScoreColumnAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203072032021_CommentTableScoreColumnAdded.resx">
+      <DependentUpon>202203072032021_CommentTableScoreColumnAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203110920013_RestoranaOzguYemekDenemeTableAdded.resx">
+      <DependentUpon>202203110920013_RestoranaOzguYemekDenemeTableAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203110948070_RestoranaOzguYemekDeleted.resx">
+      <DependentUpon>202203110948070_RestoranaOzguYemekDeleted.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203111023549_RestaurantSpecificFoodTableAdded.resx">
+      <DependentUpon>202203111023549_RestaurantSpecificFoodTableAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203132014587_FoodsTableNameUnitPriceImagesColumsDeleted.resx">
+      <DependentUpon>202203132014587_FoodsTableNameUnitPriceImagesColumsDeleted.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203132147471_FoodsTableRestaurantIDAdded.resx">
+      <DependentUpon>202203132147471_FoodsTableRestaurantIDAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203132259082_OrdersAddressIDColumnAdded.resx">
+      <DependentUpon>202203132259082_OrdersAddressIDColumnAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203142114574_RestaurantSpecificFoodTableNumberOfSalesColumnAdded.resx">
+      <DependentUpon>202203142114574_RestaurantSpecificFoodTableNumberOfSalesColumnAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203152019205_OrdersTableDeliveredColumnAdded.resx">
+      <DependentUpon>202203152019205_OrdersTableDeliveredColumnAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203181042320_RestaurantTableRoleColumnAdded.resx">
+      <DependentUpon>202203181042320_RestaurantTableRoleColumnAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203210548006_CustromerTableDataUserNameDataAnnotationAdded.resx">
+      <DependentUpon>202203210548006_CustromerTableDataUserNameDataAnnotationAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203211331258_CustomerTabelGSMColumnAdded.resx">
+      <DependentUpon>202203211331258_CustomerTabelGSMColumnAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203211422563_PhoneTableDeleted.resx">
+      <DependentUpon>202203211422563_PhoneTableDeleted.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203211426145_FoodRestaurantJointTableDeleted.resx">
+      <DependentUpon>202203211426145_FoodRestaurantJointTableDeleted.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203211427530_RestauratnAdminsTableDeleted.resx">
+      <DependentUpon>202203211427530_RestauratnAdminsTableDeleted.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203211505423_DataAnnotationsAdded.resx">
+      <DependentUpon>202203211505423_DataAnnotationsAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203222032027_RestaurantScoreTypeChangeIntoDouble.resx">
+      <DependentUpon>202203222032027_RestaurantScoreTypeChangeIntoDouble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204252044394_GSMDataTypeChanged.resx">
+      <DependentUpon>202204252044394_GSMDataTypeChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204252120198_GSMDataAnnotationAdded.resx">
+      <DependentUpon>202204252120198_GSMDataAnnotationAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205091921028_RestaurantPasswordDataTypeChanged.resx">
+      <DependentUpon>202205091921028_RestaurantPasswordDataTypeChanged.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>62397</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:62397/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

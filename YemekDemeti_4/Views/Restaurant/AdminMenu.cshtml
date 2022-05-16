@@ -1,0 +1,51 @@
+﻿@using YemekDemeti_4.Models
+@using YemekDemeti_4.Data
+@{
+    ViewBag.Title = "AdminPage";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var menu = (List<Food>)ViewBag.Menu;
+    YemekDemeti_4DbEntities6 _dbContext = new YemekDemeti_4DbEntities6();
+
+}
+
+
+<a href="/Restaurant/AdminAddFood" class="btn btn-sm btn-primary mb-2"> <i class="fa fa-plus"></i> Ürün Ekle</a>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col"> </th>
+                <th scope="col">Ürün</th>
+                <th scope="col">Fiyat</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @if (menu != null)
+            {
+                foreach (var item in menu)
+                {
+                    Food yemek = _dbContext.Foods.Where(x => x.RestaurantSpecificName == item.RestaurantSpecificName).FirstOrDefault();
+                    string yemekResim = yemek.RestaurantSpecificImage;
+
+                    <tr>
+
+                        @if (yemekResim != null)
+                        {
+                            <td><img src="@Url.Content(yemekResim)" class="img-thumbnail" alt="Responsive image" width="100" height="100"/> </td>
+                        }
+
+                        <td>@(item.RestaurantSpecificName)</td>
+                        <td>@(item.RestaurantSpecificUnicPrice) TL</td>
+                        <td><a href="/Restaurant/AdminEditFood/@(item.ID)" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i> Düzenle</a></td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>
+
+

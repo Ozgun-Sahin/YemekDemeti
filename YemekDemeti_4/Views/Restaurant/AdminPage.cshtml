@@ -1,0 +1,113 @@
+﻿@using YemekDemeti_4.Models
+@using YemekDemeti_4.Data
+@model OrderVM
+
+@{
+    ViewBag.Title = "AdminPage";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var siparisler = (List<Order>)ViewBag.Siparisler;
+    int i = 0;
+    YemekDemeti_4DbEntities6 _dbContext = new YemekDemeti_4DbEntities6();
+}
+
+
+
+
+<script scr="//cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+
+<script>
+    $(function () {
+        $('[data-toggle="popover"]').popover({
+            html: true,
+
+        })
+    })
+</script>
+
+
+
+
+<div class="row">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Sipariş Zamanı</th>
+                <th scope="col">Kullanıcı</th>
+                <th scope="col">Sipariş Detayları</th>
+                <th scope="col">Puan</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in siparisler)
+            {
+                if (item.Delivered == true)
+                {
+                    OrderDetail siparisDetay = _dbContext.OrderDetails.Where(x => x.OrderID == item.ID).FirstOrDefault();
+                    Comment yorum = _dbContext.Comments.Where(x => x.OrderID == item.ID).FirstOrDefault();
+                    Customer kullanici = _dbContext.Customers.Where(x => x.ID == item.CustomerID).FirstOrDefault();
+
+                    List<OrderDetail> siparisDetayListe = _dbContext.OrderDetails.Where(x => x.OrderID == item.ID).ToList();
+
+                    i++;
+                    <tr>
+                        <th scope="row">@(i)</th>
+                        <td>@(item.OrderTime)</td>
+                        <td>@(kullanici.UserName)</td>
+                        <td>
+                            <button type="button" class="btn btn-lg btn-danger" data-toggle="popover"  data-content='
+                            <table>
+                            <thead>
+                            <tr>
+                            <th scope="col">Ürün</th>
+                            <th scope="col">Miktar</th>
+                            <th scope="col">Fiyat</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var f in siparisDetayListe)
+                                {
+                                    <tr>
+                                        <th scope="col">@(f.Food.RestaurantSpecificName)</th>
+                                        <th scope="col">@(f.Quantity)</th>
+                                        <th scope="col">@(f.UnitPrice)</th>
+                                    </tr>
+                                }
+                            </tbody>
+                            </table>
+                            '>
+                            Sipariş Detaylar
+                            </button>
+                        </td>
+                        @if (yorum != null)
+                        {
+                            <td>@(yorum.Score)</td>
+                        }
+                        else
+                        {
+                            <td>--</td>
+                        }
+                        <td></td>
+                    </tr>
+                }
+
+
+            }
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

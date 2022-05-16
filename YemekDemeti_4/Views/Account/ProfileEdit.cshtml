@@ -1,0 +1,58 @@
+﻿@using YemekDemeti_4.DTO
+@model CustomerDTO
+
+
+@{
+    ViewBag.Title = "ProfileEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+        </div>
+        <div class="col-md-5 border-right">
+
+            @using (Html.BeginForm("ProfileEdit", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(x => x.ID, new { @Value = ViewBag.KullaniciID })
+
+                @Html.ValidationSummary()
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Profil Ayarları</h4>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+
+                            <label class="labels">Resim Seç</label>
+                            <input type="file" name="Resim Ekle" value="Resim Ekle" />
+
+                            <label class="labels">Kullanıcı İsmi</label>
+
+                            @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+
+                            <label class="labels">Telefon</label>
+                            @Html.TextBoxFor(x => x.GSM, new { @class = "form-control" })
+
+                            <label class="labels">Şifre</label>
+                            @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+
+                        </div>
+                    </div>
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Kaydet</button></div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+

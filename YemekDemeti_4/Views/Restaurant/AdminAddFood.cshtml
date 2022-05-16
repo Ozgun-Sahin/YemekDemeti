@@ -1,0 +1,46 @@
+﻿@using YemekDemeti_4.Data
+@model Food
+@{
+    ViewBag.Title = "AdminAddFood";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+        </div>
+        <div class="col-md-5 border-right">
+
+            @using (Html.BeginForm("AdminAddFood", "Restaurant", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.ValidationSummary()
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Yeni Ürün</h4>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+
+                            <label class="labels">Resim Seç</label>
+                            <input type="file" name="Resim Ekle" value="Resim Ekle" />
+
+                            <label class="labels">Ürün İsmi</label>
+                            @Html.TextBoxFor(x => x.RestaurantSpecificName, new { @class = "form-control" })
+
+
+                            <label class="labels">Fiyat</label>
+                            @Html.TextBoxFor(x => x.RestaurantSpecificUnicPrice, new { @class = "form-control" })
+
+                            <label class="labels">Kategori</label>
+                            @Html.DropDownListFor(x => x.CategoryID, ((List<SelectListItem>)ViewBag.Kategoriler), new { @class = "btn btn-outline-primary dropdown-toggle" })
+
+                        </div>
+                    </div>
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Kaydet</button></div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,97 @@
+﻿@using YemekDemeti_4.Models;
+@using YemekDemeti_4.Data;
+@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var menu = (List<Food>)ViewBag.Menu;
+    var yorumlar = (List<Comment>)ViewBag.Yorumlar;
+}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+@*<link href="~/Content/MenuStyleSheet.css" rel="stylesheet" />*@
+<script src="~/Content/MenuJavaScript.js"></script>
+
+<div class="tabs-to-dropdown">
+    <div class="nav-wrapper d-flex align-items-center justify-content-between">
+        <ul class="nav nav-pills d-none d-md-flex" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="pills-company-tab" data-toggle="pill" href="#pills-company" role="tab" aria-controls="pills-company" aria-selected="true">Menü</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="pills-product-tab" data-toggle="pill" href="#pills-product" role="tab" aria-controls="pills-product" aria-selected="false">Yorumlar</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-company" role="tabpanel" aria-labelledby="pills-company-tab">
+            <div class="container-fluid">
+                <h2 class="mb-3 font-weight-bold"></h2>
+
+                <div class="col">
+                    <div class="row">
+                        @foreach (var item in menu)
+                        {
+                            string yemekResim = item.RestaurantSpecificImage;
+
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="card">
+
+                                    @if (yemekResim != null)
+                                    {
+                                        <img class="card-img-top" src="@Url.Content(yemekResim)" alt="" height="200">
+                                    }
+                                    else
+                                    {
+                                        <img class="card-img-top" src="https://pbs.twimg.com/profile_images/1012335444732858368/5UW5rP9L_400x400.jpg" alt="" height="200">
+                                    }
+
+                                    <div class="card-body">
+                                        <h6 class="card-title"><a title="View Product">@(item.RestaurantSpecificName) @(item.RestaurantSpecificUnicPrice) TL</a></h6>
+                                        <div class="row">
+                                            <div class="col">
+                                                <a href="/Cart/Add/@(item.ID)" class="btn btn-success btn-block"> <i class="fa fa-cart-arrow-down"></i> Sepete Ekle</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="pills-product" role="tabpanel" aria-labelledby="pills-product-tab">
+            <div class="container-fluid">
+                <ul class="list-group list-group-flush">
+                    @foreach (var item in yorumlar)
+                    {
+                        int siparisID = item.OrderID;
+
+                        YemekDemeti_4DbEntities6 _dbContext = new YemekDemeti_4DbEntities6();
+
+                        Order siparis = _dbContext.Orders.Where(x => x.ID == siparisID).FirstOrDefault();
+
+                        Customer yorumYapanKullanici = _dbContext.Customers.Where(x => x.ID == siparis.CustomerID).FirstOrDefault();
+
+                        if (item.Confirm == true)
+                        {
+                            <li class="list-group-item">
+                                <i class="fa fa-comment"></i> @(item.C_Comment) <br />
+                                <i class="fa fa-user-o"></i> @(yorumYapanKullanici.UserName) <br />
+                                <i class="fa fa-calendar"></i> @(siparis.OrderTime)
+                            </li>
+                        }
+
+
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

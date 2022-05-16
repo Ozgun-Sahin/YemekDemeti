@@ -1,0 +1,199 @@
+﻿@using YemekDemeti_4.Data
+@{
+    var adresler = (List<Address>)ViewBag.Adresler;
+
+}
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="~/Content/HomeStyleSheet.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+<style>
+    div.ex1 {
+        height: 125px;
+        overflow: auto;
+    }
+</style>
+
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container">
+        <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
+            <ul class="navbar-nav m-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/Home/Index"> <i class="fa fa-home"></i> Ana Sayfa</a>
+                </li>
+                <li>
+                    @if (ViewBag.Kullanici == null)
+                    {
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-sign-in"></i> Giriş Yap
+                            </button><br />
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="/Account/LogIn">Kullanıcı</a>
+                                <a class="dropdown-item" href="/Restaurant/LogIn">Restoran</a>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <a href="/Account/LogOut" class="btn btn-danger"> <i class="fa fa-sign-out"></i> Çıkış Yap</a>
+                    }
+
+                </li>
+                <li>
+                    @if (ViewBag.kullanici == null)
+                    {
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-user-plus"></i> Yeni Kayıt
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="/Account/ProfileCreate">Kullanıcı</a>
+                                <a class="dropdown-item" href="/Restaurant/RestaurantRegister">Restoran</a>
+                            </div>
+                        </div>
+                    }
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">YEMEK DEMETİ</h1>
+        <p class="lead text-muted mb-0">Aklında Kalacağına Midende Kalsın</p>
+    </div>
+</section>
+
+<div class="container">
+    <div class="row">
+
+        @if (ViewBag.Kullanici != null)
+        {
+            <div class="col-12 col-sm-3">
+                <div class="card bg-light mb-3">
+                    <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-user-o"></i> @(ViewBag.KullaniciIsmi)</div>
+                    <ul class="list-group category_block">
+                        <li class="list-group-item"><a href="/Account/ProfilePage/@(ViewBag.KullaniciID)"> <i class="fa fa-address-card"></i> Profil Sayfası</a></li>
+                        <li class="list-group-item">
+                            <form class="form-inline my-2 my-lg-0">
+                                <a class="btn btn-success btn-sm ml-3" href="/Cart/Cart">
+                                    <i class="fa fa-shopping-cart"></i> Sepet
+
+                                    @{
+                                        if (ViewBag.Count != null)
+                                        {
+                                            <span class="badge badge-light">@(ViewBag.Count)</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-light">0</span>
+                                        }
+                                    }
+
+                                </a>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card bg-light mb-3">
+                    <div class="card-header bg-success text-white text-uppercase">Adresler</div>
+                    <div class="ex1">
+                        <ul class="list-group list-group-flush">
+                            @if (adresler != null)
+                            {
+                                foreach (var item in adresler)
+                                {
+                                    <li class="list-group-item">
+                                        <a class="btn btn-light" href="/Home/Index/@(item.DistrictID)"><i class="fa fa-map-marker"></i> @(item.AdressTitle)</a>
+                                    </li>
+                                }
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+        <div class="col">
+            <div class="row">
+
+                @RenderBody()
+
+                <div class="col-12">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-lg-4 col-xl-3">
+                <h5>About</h5>
+                <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+                <p class="mb-0">
+                    Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.
+                </p>
+            </div>
+
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto">
+                <h5>Informations</h5>
+                <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+                <ul class="list-unstyled">
+                    <li><a href="">Link 1</a></li>
+                    <li><a href="">Link 2</a></li>
+                    <li><a href="">Link 3</a></li>
+                    <li><a href="">Link 4</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto">
+                <h5>Others links</h5>
+                <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+                <ul class="list-unstyled">
+                    <li><a href="">Link 1</a></li>
+                    <li><a href="">Link 2</a></li>
+                    <li><a href="">Link 3</a></li>
+                    <li><a href="">Link 4</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-4 col-lg-3 col-xl-3">
+                <h5>Contact</h5>
+                <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+                <ul class="list-unstyled">
+                    <li><i class="fa fa-home mr-2"></i> My company</li>
+                    <li><i class="fa fa-envelope mr-2"></i> email@example.com</li>
+                    <li><i class="fa fa-phone mr-2"></i> + 33 12 14 15 16</li>
+                    <li><i class="fa fa-print mr-2"></i> + 33 12 14 15 16</li>
+                </ul>
+            </div>
+            <div class="col-12 copyright mt-3">
+                <p class="float-left">
+                    <a href="#">Back to top</a>
+                </p>
+                <p class="text-right text-muted">created with <i class="fa fa-heart"></i> by <a href="https://t-php.fr/43-theme-ecommerce-bootstrap-4.html"><i>t-php</i></a> | <span>v. 1.0</span></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+

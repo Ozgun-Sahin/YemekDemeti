@@ -1,0 +1,70 @@
+﻿@using YemekDemeti_4.DTO
+@model AddressDTO
+@{
+    ViewBag.Title = "AddAdress";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var sehirListesi = ((List<SelectListItem>)ViewBag.Sehirler);
+
+}
+
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+        </div>
+        <div class="col-md-5 border-right">
+
+
+            @using (Html.BeginForm("AddAddress", "Account"))
+            {
+                @Html.ValidationSummary()
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Adres Ekle</h4>
+                    </div>
+
+                    <div class="row mt-3">
+
+                        <div class="col-md-12">
+                            <label class="labels">Adres Başlığı</label>
+                            @Html.HiddenFor(x=> x.CustomerID, new {@Value = ViewBag.KullaniciID })
+                            @Html.TextBoxFor(x => x.AdressTitle, new { @class = "form-control" })
+                        </div>
+
+                        <div class="col-md-12">
+                            <br />
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="labels">Şehir</label><br />
+                            @Html.DropDownListFor(x => x.CityID, ((List<SelectListItem>)ViewBag.Sehirler), new { @class = "btn btn-outline-primary dropdown-toggle" })
+                        </div>
+
+                        <div class="col-md-12">
+                            <br />
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="labels">Semt</label><br />
+                            @Html.DropDownListFor(x => x.DistrictID, ((List<SelectListItem>)ViewBag.Semtler), new { @class = "btn btn-outline-primary dropdown-toggle" })
+                        </div>
+
+                        <div class="col-md-12">
+                            <br />
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="labels">Address Satırı 1</label>
+                            @Html.TextBoxFor(x => x.AddressLine1, new { @class = "form-control" })
+                        </div>
+
+                    </div>
+
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Kaydet</button></div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
